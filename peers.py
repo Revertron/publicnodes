@@ -3,7 +3,7 @@ from time import sleep
 import requests
 
 
-DELAY = 60  # 1 minute
+DELAY = 600  # 10 minutes
 
 urls = {
     "index.html": "https://publicpeers.neilalexander.dev/",
