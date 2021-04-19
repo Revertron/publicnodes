@@ -15,12 +15,12 @@ def get_content(url):
     content = None
     try:
         response = requests.get(url)
+        if response.ok:
+            content = response.content
     except Exception as e:
         print("Shit happens!")
         print("{}: {}".fromat(e.__class__.__name__, e))
-    else:
-        if response.ok:
-            content = response.content
+
     return content
 
 
@@ -30,8 +30,9 @@ def main():
             content = get_content(url)
             if not content:
                 print("Shit happens, unexpected server response")
-            with open(fname, "w"):
-                f.write(content)
+            else:
+                with open(fname, "w"):
+                    f.write(content)
         sleep(DELAY)
 
 
